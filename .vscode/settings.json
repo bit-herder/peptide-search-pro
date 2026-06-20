@@ -1,0 +1,22 @@
+{
+  "cSpell.enabled": true,
+  "cSpell.useCustomDictionary": true,
+  "cSpell.customDictionaries": {
+    "project-words": {
+      "name": "project-words",
+      "path": "${workspaceFolder}/cspell.json",
+      "addWords": true
+    }
+  },
+  "cSpell.userWords": [
+    "bobbytredinnick"
+  ],
+  "cSpell.ignorePaths": [
+    "**/node_modules/**",
+    "**/.next/**",
+    "**/dist/**",
+    "**/desktop/**",
+    "**/terminals/**",
+    "**/.cursor/**"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "name": "peptide-search-pro",
+  "version": "0.1.0",
+  "private": true,
+  "main": "desktop-electron/main.js",
+  "scripts": {
+    "dev": "node scripts/with-native-node.js next dev --turbopack",
+    "build": "next build",
+    "start": "node scripts/with-native-node.js next start",
+    "lint": "next lint",
+    "db:setup": "node scripts/with-native-node.js tsx scripts/setup-db.ts",
+    "scrape": "node scripts/with-native-node.js tsx scripts/scrape-all.ts",
+    "seed": "node scripts/with-native-node.js tsx scripts/seed-demo.ts",
+    "desktop:dev": "node scripts/rebuild-native.js && node scripts/desktop-dev.js",
+    "desktop:prepare": "node scripts/prepare-desktop.js",
+    "desktop:build": "DESKTOP_BUILD=1 npm run build && SKIP_NEXT_BUILD=1 node scripts/prepare-desktop.js && electron-builder --mac --arm64",
+    "postinstall": "node scripts/rebuild-native.js",
+    "rebuild:native": "node scripts/rebuild-native.js"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.17.4",
+    "better-sqlite3": "^11.8.1",
+    "cheerio": "^1.0.0",
+    "clsx": "^2.1.1",
+    "fuse.js": "^7.1.0",
+    "lucide-react": "^0.511.0",
+    "next": "^15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwind-merge": "^3.3.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@tailwindcss/postcss": "^4.1.8",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.15.29",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "electron": "^35.1.5",
+    "electron-builder": "^26.0.12",
+    "eslint": "^9.28.0",
+    "eslint-config-next": "^15.3.3",
+    "tailwindcss": "^4.1.8",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  },
+  "build": {
+    "appId": "com.peptidesearch.pro",
+    "productName": "Peptide Search Pro",
+    "npmRebuild": false,
+    "directories": {
+      "output": "dist",
+      "buildResources": "build",
+      "app": "desktop-electron"
+    },
+    "files": [
+      "**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "desktop/standalone",
+        "to": "standalone",
+        "filter": [
+          "**/*",
+          "!node_modules/**/*"
+        ]
+      },
+      {
+        "from": "desktop/standalone/node_modules",
+        "to": "standalone/node_modules"
+      },
+      {
+        "from": "data/peptides.db",
+        "to": "data/peptides.db"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.reference",
+      "target": [
+        "dir"
+      ],
+      "icon": "build/icon.png"
+    }
+  },
+  "optionalDependencies": {
+    "@tailwindcss/oxide-darwin-arm64": "^4.3.1",
+    "lightningcss-darwin-arm64": "^1.32.0"
+  }
+}

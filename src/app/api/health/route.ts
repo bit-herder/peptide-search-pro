@@ -11,9 +11,10 @@ export async function GET() {
       { status: "ok", timestamp: new Date().toISOString() },
       { status: 200 },
     );
-  } catch {
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
     return NextResponse.json(
-      { status: "degraded", error: "db unavailable" },
+      { status: "degraded", error: "db unavailable", detail: message },
       { status: 503 },
     );
   }

@@ -4,7 +4,7 @@ FROM --platform=linux/amd64 node:22-slim AS builder
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --ignore-scripts
 
 COPY . .
 RUN npm run build

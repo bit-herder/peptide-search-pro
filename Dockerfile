@@ -17,13 +17,11 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 
-# Create data directory owned by node user (SQLite needs write access at runtime)
-RUN mkdir -p /app/data && chown -R node:node /app/data
+# Create data directory for SQLite
+RUN mkdir -p /app/data
 
-COPY --from=builder --chown=node:node /app/.next/standalone ./
-COPY --from=builder --chown=node:node /app/.next/static ./.next/static
-
-USER node
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 3000
 

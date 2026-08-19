@@ -42,6 +42,9 @@ export function Header() {
           <Link href="/providers" className="hover:text-foreground transition-colors hidden sm:inline">
             Providers
           </Link>
+          <Link href="/deals" className="hover:text-foreground transition-colors">
+            Deals
+          </Link>
           <Link href="/alerts" className="hover:text-foreground transition-colors hidden md:inline">
             Alerts
           </Link>

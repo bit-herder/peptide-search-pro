@@ -1,0 +1,13 @@
+node_modules
+.git
+data/*.db
+.next
+desktop-electron
+dist
+test-results
+*.md
+!README.md
+.env*
+scripts/desktop*
+scripts/rebuild-native.js
+scripts/with-native-node.js

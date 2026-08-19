@@ -4,7 +4,7 @@ FROM --platform=linux/amd64 node:22-slim AS builder
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci --ignore-scripts
+RUN npm ci --ignore-scripts && npm rebuild better-sqlite3
 
 COPY . .
 RUN npm run build

@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci --ignore-scripts && npm rebuild better-sqlite3 --build-from-source
+RUN npm ci
 
 COPY . .
 RUN npm run build

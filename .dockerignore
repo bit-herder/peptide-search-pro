@@ -9,5 +9,3 @@ test-results
 !README.md
 .env*
 scripts/desktop*
-scripts/rebuild-native.js
-scripts/with-native-node.js

@@ -24,6 +24,7 @@ RUN mkdir -p /app/data
 
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/node_modules/better-sqlite3/build ./node_modules/better-sqlite3/build
 
 EXPOSE 3000
 
